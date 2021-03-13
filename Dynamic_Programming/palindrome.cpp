@@ -28,7 +28,10 @@ void input()
 bool dfs(int x, int y)
 {
 	if (board[x] != board[y] || !dp[x][y])
+	{
+		dp[x][y] = 0;
 		return (0);
+	}
 	if (dp[x][y] == 1)
 		return (1);
 	if (x >= y - 1)
@@ -50,13 +53,9 @@ void solve()
 	while (S--)
 	{
 		std::cin >> a >> b;
-		if (dp[a][b] == 1)
-			std::cout << dp[a][b] << endl;
-		else
-		{
+		if (dp[a][b] == -1)
 			dfs(a, b);
-			std::cout << dp[a][b] << endl;
-		}
+		std::cout << dp[a][b] << endl;
 	}
 }
 
