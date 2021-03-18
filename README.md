@@ -5,7 +5,6 @@ This repository is for saving my baekjoon solves.
 
 ## My Info
 
-- From solved.ac
-
-![ex_screenshot](./img/info1.jpg)
-![ex_screenshot](./img/info2.jpg)
+- solved.ac <br>
+https://solved.ac/profile/chhan2759 <br>
+gold 2 (210318 updated)
