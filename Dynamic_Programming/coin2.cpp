@@ -2,12 +2,11 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#define _MAX 10002
 
+#define _MAX 10002
 size_t n, k;
 std::vector<int> coins;
 std::vector<int> dp;
-
 
 void input_faster()
 {
@@ -34,13 +33,10 @@ void solve()
 	for (size_t i = 0 ; i < n ; i++)
 	{
 		ind = coins[i];
+		dp[ind] = 1;
 		for (size_t j = ind; j <= k ; j++)
-		{
-			if (dp[j - ind] != _MAX)
-				dp[j] = std::min(dp[j], dp[j - ind] + 1);
-			else if (!(j % ind))
-				dp[j] = j / ind;
-		}
+			if (dp[j - ind] + 1 < dp[j])
+				dp[j] = dp[j - ind] + 1;
 	}
 }
 
@@ -59,4 +55,3 @@ int main()
 	print_val();
 	return (0);
 }
-
