@@ -2,8 +2,8 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-
 #define _MAX 10002
+
 size_t n, k;
 std::vector<int> coins;
 std::vector<int> dp;
