@@ -41,7 +41,7 @@ int bridge_state() // calculating the number of trucks
 	return (cnt);
 }
 
-void bridge_move() // move right to left in the bridge
+void bridge_move() // move the trucks right to left in the bridge
 {
 	for (int i = bridge_begin ; i <= bridge_end + 1 ; i++)//bridge_end + 1 is for begin_end to 0
 		bridge[i - 1] = bridge[i];
@@ -63,7 +63,7 @@ void move_action() // move control both bridge and queue
 	bridge_move();
 	top = q.front();
 	weight = bridge_weight();
-	if (!q.empty() && weight + top <= L && !bridge[bridge_end]) // when truck can move in right side, and birdge of end side is clear
+	if (!q.empty() && weight + top <= L && !bridge[bridge_end]) // when truck can move in right side, and the birdge of the end side is clear
 	{
 		q.pop();
 		bridge[bridge_end] = top;
@@ -72,7 +72,7 @@ void move_action() // move control both bridge and queue
 
 void solve()
 {
-	while (!q.empty() || bridge_state()) //when q is not empty, or bridge is not clear
+	while (!q.empty() || bridge_state()) //when q is not empty, or the bridge is not clear
 	{
 		move_action();
 		ans++;
