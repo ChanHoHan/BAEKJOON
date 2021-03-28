@@ -65,7 +65,6 @@ void bfs(int y, int x) // bfs to make area being polluted
 			q.push({n_y, n_x});
 		}
 	}
-
 }
 
 void cal_not_pollution() // calculating where not polluted
@@ -85,8 +84,6 @@ void cal_not_pollution() // calculating where not polluted
 
 void backtracking(int y, int x, int cnt)
 {
-
-	memcpy(g_map_cpy, g_map, sizeof(g_map));
 	for(int i = y ; i < N ; i++)
 	{
 		for (int j = x; j < M ; j++)
