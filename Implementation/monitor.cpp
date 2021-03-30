@@ -86,17 +86,7 @@ void brute_force(int ind)
 	int y = cctv[ind].first;
 	int x = cctv[ind].second;
 	int g_map_val = g_map[y][x];
-	/*
-	std::cout << "ind : " << ind << std::endl;
-	for (int i =0 ; i < N ; i++)
-	{
-		for (int j = 0 ; j<M ; j++)
-		{
-			std::cout << g_map[i][j] << " ";
-		}
-		std::cout << std::endl;
-	}
-	std::cout << std::endl;*/
+	
 	if (ind == cctv.size())
 	{
 		cal_blind_spot();
