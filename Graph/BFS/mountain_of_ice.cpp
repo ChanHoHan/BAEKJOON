@@ -3,8 +3,6 @@
 #include <cstring>
 #include <queue>
 
-#define endl "\n"
-
 int N, M;
 int g_map[302][302];
 int tmp[302][302];
@@ -52,7 +50,7 @@ void bfs(int i, int j)
 	}
 }
 
-int cal_ice()
+int cal_ice() // 빙산 덩어리 수 계산
 {
 	int ret = 0;
 
@@ -69,7 +67,7 @@ int cal_ice()
 	return (ret);
 }
 
-int cal_surround_water(int y, int x)
+int cal_surround_water(int y, int x) // 바닷물이 얼마나 인접해 있는지 계산
 {
 	int nx, ny;
 	int ret = 0;
@@ -85,7 +83,7 @@ int cal_surround_water(int y, int x)
 	return (ret);
 }
 
-bool no_ice()
+bool no_ice() // 빙산이 있는지 확인
 {
 	for (int i = 0 ;i < N ; i++)
 		for (int j = 0 ; j < M ; j++)
