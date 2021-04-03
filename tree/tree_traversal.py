@@ -31,8 +31,6 @@ N = int(input())
 tree = [[0 for _ in range(3)] for _ in range(N + 1)]
 for i in range(N): #make tree
     a,b,c = sys.stdin.readline().split()
-    tree[alpha_to_num(b)][0] = alpha_to_num(a)
-    tree[alpha_to_num(c)][0] = alpha_to_num(a)
     tree[alpha_to_num(a)][1] = alpha_to_num(b)
     tree[alpha_to_num(a)][2] = alpha_to_num(c)
 
