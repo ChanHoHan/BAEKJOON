@@ -34,7 +34,6 @@ void recursion(int x, int y, int val, bool dir)
 		x += col;
 		val += std::abs(col);
 	}
-	//std::cout << x << " " << y << " " << val << " " << std::endl;
 	if (val >= K)
 	{
 		if (!dir)
