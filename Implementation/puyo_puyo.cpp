@@ -113,6 +113,7 @@ void gravity()
 				}
 			}
 		}
+		std::cout << std::endl;
 	}
 }
 
