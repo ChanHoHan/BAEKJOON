@@ -57,7 +57,6 @@ void time_decrease()
 			path_index++;
 		}
 	}
-
 }
 
 bool snake_move()
