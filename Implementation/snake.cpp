@@ -74,16 +74,11 @@ bool snake_move()
 	for (const auto & i : dq)
 		if (i.first == ny && i.second == nx)
 			return (0);
+	dq.push_front({ny, nx});
 	if (g_map[ny][nx])
-	{
-		dq.push_front({ny, nx});
 		g_map[ny][nx] = 0;
-	}
 	else
-	{
-		dq.push_front({ny, nx});
 		dq.pop_back();
-	}
 	if (path_index < path_change.size())
 		time_decrease();
 	return (1);
