@@ -10,7 +10,7 @@ std::vector<std::pair<int, char> >path_change;
 int path_index;
 int dy[4] = {-1, 0, 1, 0}; //NESW
 int dx[4] = {0, 1, 0, -1};
-int snake_dir = 1; // E
+int snake_dir = 1; // E start
 int sec = 0;
 
 void input_faster()
