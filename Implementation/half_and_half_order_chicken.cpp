@@ -1,5 +1,6 @@
 //16917
 #include <iostream>
+#include <algorithm>
 
 typedef long long ll;
 
@@ -20,10 +21,10 @@ void input()
 
 void solve()
 {
-	ll c_num = 0, tmp, loop = (X + Y) * 2;
+	ll c_num = 0, tmp, loop = std::max(X, Y) * 2;
 
 	ans = X * A + Y * B;
-	while (c_num < loop)
+	while (c_num <= loop)
 	{
 		tmp = X * A + Y * B + c_num * C;
 		if (ans > tmp)
