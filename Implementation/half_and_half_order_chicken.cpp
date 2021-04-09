@@ -20,21 +20,19 @@ void input()
 
 void solve()
 {
-	ll c_val = 0, tmp, loop = (X + Y) * 2;
+	ll c_num = 0, tmp, loop = (X + Y) * 2;
 
 	ans = X * A + Y * B;
-	while (c_val < loop)
+	while (c_num < loop)
 	{
-		if (X < 0)
-			X = 0;
-		if (Y < 0)
-			Y = 0;
-		tmp = X * A + Y * B + c_val * C;
+		tmp = X * A + Y * B + c_num * C;
 		if (ans > tmp)
 			ans = tmp;
-		X--;
-		Y--;
-		c_val+=2;
+		if (X > 0)
+			X--;
+		if (Y > 0)
+			Y--;
+		c_num += 2;
 	}
 	std::cout << ans;
 }
