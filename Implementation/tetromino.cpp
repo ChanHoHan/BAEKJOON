@@ -24,45 +24,30 @@ void input()
 			std::cin >> g_map[i][j];
 }
 
-__inline void max_check(int obj)
+inline void max_check(int obj)
 {
 	if (obj > ans)
 		ans = obj;
 }
 
-void check(int i, int j)
+inline void check(int i, int j)
 {
-	int obj;
-
 	if (j <= M - 4)
-	{
-		obj = g_map[i][j + 3] + g_map[i][j + 2] + g_map[i][j + 1] + g_map[i][j];
-		max_check(obj);
-	}
+		max_check(g_map[i][j + 3] + g_map[i][j + 2] + g_map[i][j + 1] + g_map[i][j]);
 	if (i <= N - 2 && j <= M - 2)
-	{
-		obj = g_map[i][j] + g_map[i][j + 1] + g_map[i + 1][j] + g_map[i + 1][j + 1];
-		max_check(obj);
-	}
+		max_check(g_map[i][j] + g_map[i][j + 1] + g_map[i + 1][j] + g_map[i + 1][j + 1]);
 	if (i <= N - 3 && j <= M - 2)
 	{
-		obj = g_map[i][j] + g_map[i + 1][j] + g_map[i + 2][j] + g_map[i + 2][j + 1];
-		max_check(obj);
-		obj = g_map[i][j] + g_map[i + 1][j] + g_map[i + 1][j + 1] + g_map[i + 2][j + 1];
-		max_check(obj);
-		obj = g_map[i][j + 1] + g_map[i + 1][j + 1] + g_map[i + 2][j + 1] + g_map[i + 2][j];
-		max_check(obj);
-		obj = g_map[i][j + 1] + g_map[i + 1][j + 1] + g_map[i + 1][j] + g_map[i + 2][j];
-		max_check(obj);
+		max_check(g_map[i][j] + g_map[i + 1][j] + g_map[i + 2][j] + g_map[i + 2][j + 1]);
+		max_check(g_map[i][j] + g_map[i + 1][j] + g_map[i + 1][j + 1] + g_map[i + 2][j + 1]);
+		max_check(g_map[i][j + 1] + g_map[i + 1][j + 1] + g_map[i + 2][j + 1] + g_map[i + 2][j]);
+		max_check(g_map[i][j + 1] + g_map[i + 1][j + 1] + g_map[i + 1][j] + g_map[i + 2][j]);
 	}
 	if (i <= N - 2 && j <= M - 3)
-	{
-		obj = g_map[i][j] + g_map[i][j + 1] + g_map[i][j + 2] + g_map[i + 1][j + 1];
-		max_check(obj);
-	}
+		max_check(g_map[i][j] + g_map[i][j + 1] + g_map[i][j + 2] + g_map[i + 1][j + 1]);
 }
 
-void rotate_map()
+inline void rotate_map()
 {
 	for (int i = 0 ; i < N ; i++)
 		for (int j = 0 ; j < M ; j++)
