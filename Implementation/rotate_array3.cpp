@@ -54,18 +54,14 @@ void rotate()
 	}
 	else if (OP == 5)
 	{
-		int h_N = N / 2;
-		int h_M = M / 2;
-		int s_y = 0;
-		int s_x = 0;
+		int h_N = N / 2, h_M = M / 2;
+		int s_y = 0, s_x = 0, n_y, n_x;
 
 		FOR(k, 4)//direction
 		{
+		n_y = dy[k] * h_N, n_x = dx[k] * h_M;
 		R_FOR(i, s_y, s_y + h_N)
-		{
-		R_FOR(j, s_x, s_x + h_M)
-			tmp[i + dy[k] * h_N][j + dx[k] * h_M] = g_map[i][j];
-		}
+		R_FOR(j, s_x, s_x + h_M) tmp[i + n_y][j + n_x] = g_map[i][j];
 		s_y = s_y + dy[k] * h_N;
 		s_x = s_x + dx[k] * h_M;
 		}
@@ -73,19 +69,15 @@ void rotate()
 	}
 	else if (OP == 6)
 	{
-		int h_N = N / 2;
-		int h_M = M / 2;
-		int s_y = 0;
-		int s_x = 0;
+		int h_N = N / 2, h_M = M / 2;
+		int s_y = 0, s_x = 0, n_y, n_x;
 
 		FOR(k, 4)//direction
 		{
-			int dir = (5 - k) % 4;
+		int dir = (5 - k) % 4;
+		n_y = dy[dir] * h_N, n_x = dx[dir] * h_M;
 		R_FOR(i, s_y, s_y + h_N)
-		{
-		R_FOR(j, s_x, s_x + h_M)
-			tmp[i + dy[dir] * h_N][j + dx[dir] * h_M] = g_map[i][j];
-		}
+		R_FOR(j, s_x, s_x + h_M) tmp[i + n_y][j + n_x] = g_map[i][j];
 		s_y = s_y + dy[dir] * h_N;
 		s_x = s_x + dx[dir] * h_M;
 		}
