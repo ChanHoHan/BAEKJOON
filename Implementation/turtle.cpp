@@ -34,7 +34,7 @@ inline void make_max_min(int x, int y, int &max_y, int &min_y, int &max_x, int &
 
 inline void solve()
 {
-	int y = 500, x = 500, dir = 0, max_y = 500, max_x = 500,  min_y = 500, min_x = 500;
+	int y = 0, x = 0, dir = 0, max_y = 0, max_x = 0,  min_y = 0, min_x = 0;
 	
 	std::cin >> move;
 	for (size_t i = 0 ; i < move.size() ; i++)
