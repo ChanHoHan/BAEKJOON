@@ -2,7 +2,7 @@
 #include <iostream>
 
 std::string str;
-int ans, val, ind;
+int ans, ind;
 
 void input_faster()
 {
@@ -67,4 +67,3 @@ int main()
 	print_val();
 	return (0);
 }
-
