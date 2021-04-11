@@ -38,7 +38,7 @@ void pre_set()
 
 void solve()
 {
-	int left = 0, right = D, mid, fl = 0;
+	int left = 0, right = D, mid;
 
 	pre_set();
 	for (int i = 0 ; i < N ; i++)
