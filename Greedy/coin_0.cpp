@@ -23,7 +23,7 @@ void input()
 
 void solve()
 {
-	for (int i = N - 1 ; i >= 0 ; i--)
+	for (int i = N - 1 ; K != 0 && i >= 0 ; i--)
 	{
 		if (A[i] <= K)
 		{
