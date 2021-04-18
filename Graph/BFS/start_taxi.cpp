@@ -12,7 +12,6 @@ int t_y, t_x, t_gas;
 std::vector<std::pair<int, int> >guests;
 std::vector<std::pair<std::pair<int, int>, int> >guests_save;
 std::queue<std::pair<int, int> >q;
-std::pair<int, int> dest;
 int dy[4] = {0, 0, 1, -1};
 int dx[4] = {1, -1, 0, 0};
 int dest_y, dest_x;
