@@ -3,7 +3,7 @@
 
 int N, S;
 int sq[21];
-int ans;
+int ans, max_depth;
 
 void io_faster()
 {
@@ -20,7 +20,7 @@ void input()
 		std::cin >> sq[i];
 }
 
-void brute_force(int index, int val, int depth, int& max_depth)
+void brute_force(int index, int val, int depth)
 {
 	if (depth == max_depth)
 	{
@@ -29,13 +29,16 @@ void brute_force(int index, int val, int depth, int& max_depth)
 		return;
 	}
 	for (int i = index; i < N ; i++)
-		brute_force(i + 1, val + sq[i], depth + 1, max_depth);
+		brute_force(i + 1, val + sq[i], depth + 1);
 }
 
 void solve()
 {
 	for (int i = 1 ; i <= N ; i++)
-		brute_force(0, 0, 0, i);
+	{
+		max_depth = i;
+		brute_force(0, 0, 0);
+	}
 }
 
 void print_val()
