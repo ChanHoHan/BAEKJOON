@@ -37,7 +37,6 @@ bool is_possible(std::string& ans)
 
 	for (size_t i = 0 ; i < ans.size() ; i++)
 	{
-
 		if (vo.find(ans[i]) != vo.end())
 			v++;
 		else
