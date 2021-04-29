@@ -1,7 +1,6 @@
 //2661
 #include <iostream>
 #include <string>
-#define endl "\n"
 
 int N;
 
