@@ -9,18 +9,14 @@
 int T, A, B;
 std::queue<std::pair<std::string, int> > q;
 bool visited[10001];
+const char op[4] = {'D', 'S', 'L', 'R'};
+int (*fp[4])(int);
 
 void io_faster()
 {
 	std::ios_base::sync_with_stdio(false);
 	std::cin.tie(0);
 	std::cout.tie(0);
-}
-
-void input()
-{
-	io_faster();
-	std::cin >> T;
 }
 
 inline int D(int a)
@@ -43,34 +39,20 @@ inline int R(int a)
 	return ((a % 10) * 1000 + a / 10);
 }
 
-inline int function_handler(int i, int a)
+void input()
 {
-	if (i == 0)
-		return (D(a));
-	else if (i == 1)
-		return (S(a));
-	else if (i == 2)
-		return (L(a));
-	else
-		return (R(a));
-}
-
-inline char operation(int i)
-{
-	if (i == 0)
-		return ('D');
-	else if (i == 1)
-		return ('S');
-	else if (i == 2)
-		return ('L');
-	else
-		return ('R');
+	io_faster();
+	std::cin >> T;
+	fp[0] = D;
+	fp[1] = S;
+	fp[2] = L;
+	fp[3] = R;
 }
 
 inline void bfs()
 {
-	std::string qs, ns;
-	int val, nval;
+	std::string qs, n_s;
+	int val, n_val;
 
 	q = std::queue<std::pair<std::string, int> > ();
 	std::memset(visited, 0, sizeof(visited));
@@ -82,17 +64,17 @@ inline void bfs()
 		q.pop();
 		for (int i = 0 ; i < 4 ; i++)
 		{
-			nval = function_handler(i, val);
-			if (nval == B)
+			n_val = fp[i](val);
+			if (n_val == B)
 			{
-				std::cout << qs + operation(i) << endl;
+				std::cout << qs + op[i] << endl;
 				return ;
 			}
-			if (visited[nval])
+			if (visited[n_val])
 				continue; 
-			visited[nval] = 1;
-			ns = qs + operation(i);
-			q.push({ns, nval});
+			visited[n_val] = 1;
+			n_s = qs + op[i];
+			q.push({n_s, n_val});
 		}
 	}
 }
