@@ -26,17 +26,9 @@ void input()
 bool comp(int ind, int left, int right)
 {
 	if (ineq[ind] == '<')
-	{
-		if (left < right)
-			return (1);
-		return (0);
-	}
+		return (left < right);
 	else
-	{
-		if (left > right)
-			return (1);
-		return (0);
-	}
+		return (left > right);
 }
 
 void brute(int ind, long long val)
