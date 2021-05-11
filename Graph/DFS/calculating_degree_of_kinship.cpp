@@ -45,7 +45,6 @@ bool dfs(int index, int cnt)
 		visited[relation[index][i]] = 1;
 		if (dfs(relation[index][i], cnt + 1))
 			return (1);
-		visited[relation[index][i]] = 0;
 	}
 	return (0);
 }
