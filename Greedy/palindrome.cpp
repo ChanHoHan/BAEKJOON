@@ -17,10 +17,8 @@ void input()
 	std::cin >> T;
 }
 
-bool pseudo(int start, int end, int size, std::string &a)
+bool pseudo(int start, int end, std::string &a)
 {
-	if (start == size)
-		return (0);
 	while(start < end)
 	{
 		if (a[start] != a[end])
@@ -45,7 +43,7 @@ void solve()
 	{
 		if (a[start] != a[end])
 		{
-			if (!pseudo(start + 1 , end, size, a) && !pseudo(start, end - 1, size, a))
+			if (!pseudo(start + 1 , end, a) && !pseudo(start, end - 1, a))
 			{
 				std::cout << 2 << endl;
 				return ;
