@@ -26,7 +26,7 @@ void input()
 
 void solve()
 {
-	int ind,number, number_ind;//ind : 자리수, number : 몇번째
+	int ind,number, number_ind;//ind : 자리수, number : 조사할 숫자
 
 	for (int i = 1 ; i < 10 ; i++)
 	{
