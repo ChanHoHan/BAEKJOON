@@ -44,6 +44,8 @@ void solve()
 		current = pq.top().second;
 		pq.pop();
 		c_size = graph[current].size();
+		if (d > distance[current])
+			continue;
 		for (int i = 0 ; i < c_size ; i++)
 		{
 			next = graph[current][i];
