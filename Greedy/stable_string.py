@@ -35,9 +35,7 @@ while inp():
         if (tmp == 's'):
             tmp = t
             continue
-        if (tmp == '}' and t == '}'):
-            ans+=1
-        elif (tmp == '{' and t == '{'):
+        if (tmp == t):
             ans+=1
         else:
             ans+=2
