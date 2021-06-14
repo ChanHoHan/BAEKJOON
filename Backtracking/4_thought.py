@@ -18,8 +18,6 @@ def cal(n, depth, val):
         return (1)
     return (0)
 
-
-
 for _ in range(m):
     n = int(sys.stdin.readline())
     if (cal(n, 0, '4')):
