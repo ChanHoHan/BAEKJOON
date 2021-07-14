@@ -60,7 +60,8 @@ void input()
 
 void solve()
 {
-	int a, b, ans = 0;
+	int a, b;
+	long long ans = 0;
 
 	for (int i = 0 ; i < M ; i++)
 	{
