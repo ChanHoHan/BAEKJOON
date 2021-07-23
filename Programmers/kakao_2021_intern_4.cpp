@@ -4,6 +4,7 @@
 #include <queue>
 #include <map>
 #include <cstring>
+#define MAX 999999999
 
 std::priority_queue<std::pair<int, std::pair<int, int> > > pq;//dist, node, bit
 std::vector<std::pair<int, int> > g_map[1025][1000]; //node, cost
@@ -31,7 +32,7 @@ void combination(int max_depth, int depth, int index, int bitmask) {
 			int a = i[0];
 			int b = i[1];
 			int cost = i[2];
-			// 현재 트랩인데 다음 것이 트랩이 아닌 경우 또는 현재 트랩이 아닌데, 다음 것이 트랩인 경우
+			// 현재 트랩인데 다음 것이 트랩이 아닌 경우, 또는 현재 트랩이 아닌데, 다음 것이 트랩인 경우
 			if ((trap_check(a, bitmask) && (!trap_check(b, bitmask))) || 
 					(!trap_check(a, bitmask)) && (trap_check(b, bitmask)))
 				g_map[bitmask][b].push_back({a, cost});
@@ -49,7 +50,7 @@ int solution(int n, int start, int end, std::vector<std::vector<int>> roads, std
 	int answer = 0;
 	int num = 0;
 	trap_size = traps.size();
-	std::memset(dist, 0x3f, sizeof(dist));
+	std::memset(dist, 0x3f, sizeof(dist)); // 무한대로 초기화
 	g_road = roads;
 	// trap에 번호 부여. 예를 들면, 첫 번째 트랩이 10이면 {10 : 0}
 	for (auto &i : traps){
@@ -70,20 +71,22 @@ int solution(int n, int start, int end, std::vector<std::vector<int>> roads, std
 		for (auto &i : g_map[bit][node]) {
 			int next = i.first;
 			int next_distance = i.second;
-			// 다음것이 트랩인데, 이미 밟았던 거면
-			if (trap_map.find(next) != trap_map.end() && (bit & (1 << trap_map[next]))) {
-				if (dist[(bit ^ (1 << trap_map[next]))][next] < distance + next_distance)
-				    continue;
-				dist[(bit ^ (1 << trap_map[next]))][next] = distance + next_distance;
-				pq.push({-(distance + next_distance), {next, (bit ^ (1 << trap_map[next]))}});
+			// 다음것이 트랩일때
+			if (is_trap(next)) {
+				if (bit & (1 << trap_map[next])) { // 트랩을 밟아왔는데, 다음 꺼가 이미 밟았던 트랩이면
+					if (dist[(bit ^ (1 << trap_map[next]))][next] < distance + next_distance) // 트랩 밟은걸 없앰
+				    		continue;
+					dist[(bit ^ (1 << trap_map[next]))][next] = distance + next_distance;
+					pq.push({-(distance + next_distance), {next, (bit ^ (1 << trap_map[next]))}});
+				}
+				else {
+					if (dist[(bit | (1 << trap_map[next]))][next] < distance + next_distance)
+						continue;
+					dist[(bit | (1 << trap_map[next]))][next] = distance + next_distance;
+					pq.push({-(distance + next_distance), {next, (bit | (1 << trap_map[next]))}});
+				}
 			}
-			else if (trap_map.find(next) != trap_map.end()) {
-				if (dist[(bit | (1 << trap_map[next]))][next] < distance + next_distance)
-					continue;
-				dist[(bit | (1 << trap_map[next]))][next] = distance + next_distance;
-				pq.push({-(distance + next_distance), {next, (bit | (1 << trap_map[next]))}});
-			}
-			else{
+			else {
 				if (dist[bit][next] < distance + next_distance)
 					continue;
 			dist[bit][next] = distance + next_distance;
@@ -91,7 +94,7 @@ int solution(int n, int start, int end, std::vector<std::vector<int>> roads, std
 		    }
 		}
 	}
-	answer = 999999999;
+	answer = MAX;
 	for (int i = 0 ; i < 1024 ; i++)
 		if (answer > dist[i][end])
 			answer = dist[i][end];
