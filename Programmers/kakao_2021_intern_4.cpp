@@ -74,24 +74,26 @@ int solution(int n, int start, int end, std::vector<std::vector<int>> roads, std
 			// 다음것이 트랩일때
 			if (is_trap(next)) {
 				if (bit & (1 << trap_map[next])) { // 트랩을 밟아왔는데, 다음 꺼가 이미 밟았던 트랩이면
-					if (dist[(bit ^ (1 << trap_map[next]))][next] < distance + next_distance) // 트랩 밟은걸 없앰
+					int next_bit = bit ^ (1 << trap_map[next]);
+					if (dist[next_bit][next] < distance + next_distance) // 트랩 밟은걸 없앰
 				    		continue;
-					dist[(bit ^ (1 << trap_map[next]))][next] = distance + next_distance;
-					pq.push({-(distance + next_distance), {next, (bit ^ (1 << trap_map[next]))}});
+					dist[next_bit][next] = distance + next_distance;
+					pq.push({-(distance + next_distance), {next, next_bit}});
 				}
 				else {
-					if (dist[(bit | (1 << trap_map[next]))][next] < distance + next_distance)
+					int next_bit = bit | 1 << trap_map[next];
+					if (dist[next_bit][next] < distance + next_distance)
 						continue;
-					dist[(bit | (1 << trap_map[next]))][next] = distance + next_distance;
-					pq.push({-(distance + next_distance), {next, (bit | (1 << trap_map[next]))}});
+					dist[next_bit][next] = distance + next_distance;
+					pq.push({-(distance + next_distance), {next, next_bit}});
 				}
 			}
 			else {
 				if (dist[bit][next] < distance + next_distance)
 					continue;
-			dist[bit][next] = distance + next_distance;
-			pq.push({-(distance + next_distance), {next, bit}});
-		    }
+				dist[bit][next] = distance + next_distance;
+				pq.push({-(distance + next_distance), {next, bit}});
+			}
 		}
 	}
 	answer = MAX;
