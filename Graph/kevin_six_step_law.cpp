@@ -20,7 +20,7 @@ void input()
 	}
 }
 
-void solve()
+void floyd()
 {
 	for (int i = 1 ; i <= N ; i++) {
 		for (int j = 1 ; j <= N ; j++) {
@@ -30,26 +30,35 @@ void solve()
 			}
 		}
 	}
-	
-	int min_ = 0;
-	int ans = 1;
 
-	for (int i = 2 ; i <= N ; i++) {
-		min_ += rel[1][i];
-	}
-	for (int i = 2 ; i <= N ; i++) {
+}
+
+void swap(int &a, int &b)
+{
+	int tmp;
+
+	tmp = b;
+	b = a;
+	a = tmp;
+}
+
+void solve()
+{
+		
+	int min_ = 999, ans = 1;
+
+	floyd();
+	for (int i = 1 ; i <= N ; i++) {
 		int min_2 = 0;
 		for (int j = 1 ; j <= N ; j++) {
 			if (i == j)
 				continue;
 			min_2 += rel[i][j];
 		}
-		if (min_ > min_2) {
+		if (min_ > min_2) 
+		{
 			ans = i;
-			int tmp;
-			tmp = min_;
-			min_ = min_2;
-			min_2 = tmp;
+			swap(min_, min_2);
 		}
 	}
 	cout << ans;
