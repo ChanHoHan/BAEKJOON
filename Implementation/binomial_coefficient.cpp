@@ -10,7 +10,7 @@ void input()
 	cin >> N >> K;
 }
 
-int factorial(int v, int n)
+int mult(int v, int n)
 {
 	int r = 1;
 	while(n)
@@ -20,7 +20,7 @@ int factorial(int v, int n)
 
 void solve()
 {
-	cout << factorial(N, K) / factorial(K, K);
+	cout << mult(N, K) / mult(K, K);
 }
 
 int main()
